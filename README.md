@@ -2,7 +2,7 @@
 
 DNS Changer is a Python script for changing dns server in command line.
 
-![License](https://img.shields.io/github/license/erfansaberi/DNSChanger?logo=L&style=flat-square)
+![License](https://img.shields.io/github/license/erfansaberi/DNSChanger?logo=M&style=flat-square)
 ![Code Size](https://img.shields.io/github/languages/code-size/erfansaberi/DNSChanger?logo=c&style=flat-square)
 
 
