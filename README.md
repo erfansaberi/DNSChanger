@@ -15,4 +15,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/) [](https://img.shields.io/github/license/erfansaberi/DNSChanger?style=flat-square)
+[MIT](https://choosealicense.com/licenses/mit/) [License](https://img.shields.io/github/license/erfansaberi/DNSChanger?style=flat-square)
