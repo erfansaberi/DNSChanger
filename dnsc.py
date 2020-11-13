@@ -12,20 +12,23 @@ if not ctypes.windll.shell32.IsUserAnAdmin():
 network_name = 'Ethernet'
 
 # And also you can change your providers here
-providers_list = {'0': {'name': 'Auto Select'},
+providers_list = {'0': {'name': 'Auto Select', 'primary': 'DHCP', 'secondary': ''},
                   '1': {'name': 'Google', 'primary': '8.8.8.8', 'secondary': '8.8.4.4'},
                   '2': {'name': 'Shecan', 'primary': '178.22.122.100', 'secondary': '185.51.200.2'},
                   '3': {'name': 'Cloudflare', 'primary': '1.1.1.1', 'secondary': '1.0.0.1'},
                   '4': {'name': 'OpenDNS', 'primary': '208.67.222.222', 'secondary': '208.67.220.220'}
                   }
 
+print('*Your current DNS configurations:')
+current = os.popen('netsh interface ip show dns').read()
+print(current)
 
-print('DNS providers list\n')
+print('*DNS providers list\n')
 for provider in providers_list:
-    print('{}-{}'.format(provider, providers_list[provider]['name']))
+    print('{}-{}\t{}    {}'.format(provider, providers_list[provider]['name'], providers_list[provider]['primary'], providers_list[provider]['secondary']))
 print('\n')
 
-provider_code = input('Insert provider code: ')
+provider_code = input('*Insert provider code (Network={}): '.format(network_name))
 
 if int(provider_code) > 0:
     print('\n')
