@@ -27,27 +27,24 @@ def main():
 
     print('*DNS providers list\n')
     for provider in providers_list:
-        print('{}-{}\t{}    {}'.format(provider, providers_list[provider]['name'], providers_list[provider]['primary'], providers_list[provider]['secondary']))
+        print(f'{provider}-{providers_list[provider]["name"]}\t{providers_list[provider]["primary"]}    {providers_list[provider]["secondary"]}')
     print('\n')
 
     provider_code = input('*Insert provider code (Network={}): '.format(network_name))
 
     if int(provider_code) > 0:
         print('\n')
-        print('You selected {}'.format(providers_list[provider_code]['name']))
-        print('Primary: {}'.format(providers_list[provider_code]['primary']))
-        print('Secondary: {}'.format(providers_list[provider_code]['secondary']))
+        print(f'You selected {providers_list[provider_code]["name"]}')
+        print(f'Primary: {providers_list[provider_code]["primary"]}')
+        print(f'Secondary: {providers_list[provider_code]["secondary"]}')
         print('\n')
 
         # And now magic happens...
-        os.system('netsh interface ip set dns name="{}" static addr={}'.format(
-            network_name, providers_list[provider_code]['primary']))
-        os.system('netsh interface ip add dns name="{}" addr={} index=2'.format(
-            network_name, providers_list[provider_code]['secondary']))
+        os.system(f'netsh interface ip set dns name="{network_name}" static addr={providers_list[provider_code]["primary"]}')
+        os.system(f'netsh interface ip add dns name="{network_name}" addr={providers_list[provider_code]["secondary"]} index=2')
 
     elif int(provider_code) == 0: #Set to auto select
-        print('\n')
-        print('You selected Auto select (get dns from dhcp)')
+        print('\nYou selected Auto select (get dns from dhcp)')
         os.system('netsh interface ipv4 set dnsservers name="{}" source=dhcp'.format(
             network_name))
 
